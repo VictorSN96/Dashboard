@@ -21,7 +21,7 @@ export const Approutes = () =>{
                 }
             />
             
-            <Route path='*' element={<Navigate to="/pagina-inicial"/>} />
+            {/*<Route path='*' element={<Navigate to="/pagina-inicial"/>} />*/}
         </Routes>
 
     );
