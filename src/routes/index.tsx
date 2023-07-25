@@ -27,17 +27,13 @@ export const Approutes = () =>{
             <Route 
                 path="/pagina-inicial" 
                 element={
-                    <div style={{ position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <div style={{ position: 'absolute',bottom: '20px', right: '20px' }}>
+                    <div >
+                        <div>
                             <Button variant='contained' color='primary' onClick={toggleTheme}>Temas</Button>
                         </div>
-                        
-                        <div style={{ position: 'absolute', bottom: '20px', left: '20px' }}>
-                            <Button variant='contained' color='primary' onClick={toggleDrawerOpen}>Toggle Drawer</Button>
-                        </div>
 
-                        <div style={{ textAlign: 'center' }}>
-                        <Dashboard />
+                        <div>
+                            <Dashboard />
                         </div>
                     </div>
           
