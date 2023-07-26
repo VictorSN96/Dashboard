@@ -10,10 +10,11 @@ import {Box } from '@mui/system';
 interface ILayoutBaseDePaginaProps{
     titulo: string;
     children: ReactNode;
+    barraDeFerramentas: ReactNode;
 }
 
 
-export const LayoutBaseDePagina: React.FC<ILayoutBaseDePaginaProps> = ({ children, titulo }) =>{
+export const LayoutBaseDePagina: React.FC<ILayoutBaseDePaginaProps> = ({ children, titulo, barraDeFerramentas }) =>{
     const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down ('sm'));
     const theme = useTheme()
 
@@ -28,16 +29,24 @@ export const LayoutBaseDePagina: React.FC<ILayoutBaseDePaginaProps> = ({ childre
                     </IconButton>
                 )}{/*smDown && vai esconder a botão menu quando o menu lateral estiver aparecendo*/}
 
-                <Typography variant="h5">
+                <Typography
+                    overflow=""
+                    whiteSpace=""
+                    textOverflow="" 
+                    variant="h5"
+                >
                     {titulo}
                 </Typography>
             </Box>
 
-            <Box>
-                Barra de Ferramentas
-            </Box>
+            {barraDeFerramentas &&(
+                <Box>
+                    {barraDeFerramentas}
+                </Box>
+            )}                    
 
-            <Box>
+            <Box flex={1} overflow='auto'>{/*o overflow ='auto' vai permitir que quando a tela que o children tiver uma altura muito grande 
+                                           ou tiver muitos componentes childrens ele vai permitir a "Box ou Div" passee a ter barra de scroll*/}
                 {children}
             </Box>
         </Box>
