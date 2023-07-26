@@ -23,7 +23,7 @@ export const LayoutBaseDePagina: React.FC<ILayoutBaseDePaginaProps> = ({ childre
     
     return(
         <Box height="100%" display='flex' flexDirection='column' gap={1}/*a unidade de medida por padrão do gap é x8 (1=8px)*/>
-            <Box padding={1} display='flex' alignItems='center' height={theme.spacing(12)} gap={1}/*itens um lado do outro da na horizontal é bom usar o gap como espaçamento*/>
+            <Box padding={1} display='flex' alignItems='center' gap={1} height={theme.spacing(smDown ? 6 : mdDown ? 8 : 12)} /*itens um lado do outro da na horizontal é bom usar o gap como espaçamento*/>
                 {smDown &&(
                     <IconButton onClick={toggleDrawerOpen}>
                         <Icon>menu</Icon>
