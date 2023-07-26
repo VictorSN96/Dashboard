@@ -5,9 +5,11 @@ import { Box } from '@mui/system';
 import { DarkTheme, LightTheme } from "./../themes";
 
 
+
 interface IThemeContextdata {
     themeName:  'light' | 'dark';
     toggleTheme: () => void;
+   
 }
 
 interface IAppThemeProviderProps{
@@ -18,10 +20,12 @@ const ThemeContext = createContext({} as IThemeContextdata);
 
 export const useAppThemeContext = () =>{
     return useContext(ThemeContext);
+    
 }
 
 export const AppThemeProvider: React.FC< IAppThemeProviderProps > = ({ children }) =>{
     const [themeName, setThemeName] = useState< 'light' | 'dark' >('light');
+    
 
     const toggleTheme = useCallback(() => {
         setThemeName(oldThemeName => oldThemeName === 'light' ? 'dark' : 'light')
@@ -35,7 +39,7 @@ export const AppThemeProvider: React.FC< IAppThemeProviderProps > = ({ children 
     }, [ themeName]);
 
     return(
-        <ThemeContext.Provider value={{ themeName, toggleTheme }}>
+        <ThemeContext.Provider value={{ themeName, toggleTheme}}>
             <ThemeProvider theme={theme}>
                 <Box width= "100vw" height= "100vh" bgcolor={theme.palette.background.default}>
                     {children}

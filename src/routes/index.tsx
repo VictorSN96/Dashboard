@@ -1,16 +1,16 @@
 import { Routes, Route, Navigate} from 'react-router-dom';
 import { useEffect } from 'react';
 
-import { Button } from '@mui/material';
-import { useAppThemeContext, useDrawerContext } from '../shared/contexts';
+import {  useDrawerContext } from '../shared/contexts';
 import { Dashboard } from '../pages';
 
 
 
 
+
+
 export const Approutes = () =>{
-    const { toggleTheme } = useAppThemeContext();
-    const { toggleDrawerOpen, setDrawerOptions} = useDrawerContext();
+    const {setDrawerOptions} = useDrawerContext();
 
     useEffect(() =>{
         setDrawerOptions([
@@ -29,14 +29,9 @@ export const Approutes = () =>{
                 element={
                     <div >
                         <div>
-                            <Button variant='contained' color='primary' onClick={toggleTheme}>Temas</Button>
-                        </div>
-
-                        <div>
                             <Dashboard />
                         </div>
                     </div>
-          
                 }
             />
             
