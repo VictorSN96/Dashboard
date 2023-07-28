@@ -2,54 +2,93 @@ import { Box, Button, Divider, Icon, Paper, useTheme } from "@mui/material";
 
 
 
-
-export const FerramentasDeDetalhe:React.FC = () =>{
+interface IFerramentasDeDetalheProps{
+    textoBotaoNovo?: string;
+    mostrarBotaoNovo?: boolean;
+    mostrarBotaoVoltar?: boolean;
+    mostrarBotaoApagar?: boolean;
+    mostrarBotaoSalvar?: boolean;
+    mostrarBotaoSalvareVoltar?: boolean;
+    aoClicarEmNovo?: () => void;
+    aoClicarEmVoltar?: () => void;
+    aoClicarEmApagar?: () => void;
+    aoClicarEmSalvar?: () => void;
+    aoClicarEmSalvareVoltar?: () => void;
+}
+export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
+    textoBotaoNovo= 'Novo',
+    mostrarBotaoNovo = true,
+    mostrarBotaoVoltar = true,
+    mostrarBotaoApagar = true,
+    mostrarBotaoSalvar = true,
+    mostrarBotaoSalvareVoltar = false,
+    aoClicarEmNovo,
+    aoClicarEmVoltar,
+    aoClicarEmApagar,
+    aoClicarEmSalvar,
+    aoClicarEmSalvareVoltar,
+}) =>{
     const theme = useTheme();
+    
     return(
         <Box
-        gap={1} 
-        marginX={1} 
-        padding={1} 
-        paddingX={2} 
-        display="flex" 
-        alignItems="center" 
-        height={theme.spacing(5)} 
-        component={Paper}
+            gap={1} 
+            marginX={1} 
+            padding={1} 
+            paddingX={2} 
+            display="flex" 
+            alignItems="center" 
+            height={theme.spacing(5)} 
+            component={Paper}
         >
-
-            <Button
-                color="primary"
-                variant="contained"
-                disableElevation 
-                endIcon={<Icon>add</Icon>}
-            >Novo</Button>
-            <Button
-                color="primary"
-                variant="outlined"
-                disableElevation 
-                endIcon={<Icon>save</Icon>}
-            >Salvar</Button>
-            <Button
-                color="primary"
-                variant="outlined"
-                disableElevation 
-                endIcon={<Icon>save</Icon>}
-            >Salvar e Voltar</Button>
-            <Button
-                color="primary"
-                variant="outlined"
-                disableElevation 
-                endIcon={<Icon>arrow_back</Icon>}
-            >Voltar</Button>
+            {mostrarBotaoNovo &&(
+                <Button
+                    color="primary"
+                    variant="contained"
+                    onClick={aoClicarEmNovo}
+                    disableElevation 
+                    endIcon={<Icon>add</Icon>}
+                >{textoBotaoNovo}</Button>
+            )}
+            {mostrarBotaoSalvar &&(
+                <Button
+                    color="primary"
+                    variant="outlined"
+                    onClick={aoClicarEmSalvar}
+                    disableElevation 
+                    endIcon={<Icon>save</Icon>}
+                >Salvar</Button>
+            )}
+            {mostrarBotaoSalvareVoltar &&(
+                <Button
+                    color="primary"
+                    variant="outlined"
+                    onClick={aoClicarEmSalvareVoltar}
+                    disableElevation 
+                    endIcon={<Icon>save</Icon>}
+                >Salvar e Voltar</Button>
+            )}
+            {mostrarBotaoVoltar &&(    
+                <Button
+                    color="primary"
+                    variant="outlined"
+                    onClick={aoClicarEmVoltar}
+                    disableElevation 
+                    endIcon={<Icon>arrow_back</Icon>}
+                >Voltar</Button>
+            )}
 
             <Divider variant="middle" orientation="vertical" />
             
-            <Button
-                color="secondary"
-                variant="outlined"
-                disableElevation 
-                endIcon={<Icon>delete</Icon>}
-            >Apagar</Button>
+            {mostrarBotaoApagar&&(
+                <Button
+                    color="secondary"
+                    variant="outlined"
+                    onClick={aoClicarEmApagar}
+                    disableElevation 
+                    endIcon={<Icon>delete</Icon>}
+                >Apagar</Button>
+            )}
         </Box>
     );
 }
