@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Icon, Paper, Skeleton, useTheme } from "@mui/material";
+import { Box, Button, Divider, Icon, Paper, Skeleton, Theme, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 
 
@@ -30,7 +30,7 @@ export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
     mostrarBotaoVoltar = true,
     mostrarBotaoApagar = true,
     mostrarBotaoSalvar = true,
-    mostrarBotaoSalvareVoltar = false,
+    mostrarBotaoSalvareVoltar = true,
 
     mostrarBotaoNovoCarregando = false,
     mostrarBotaoVoltarCarregando = false,
@@ -44,6 +44,8 @@ export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
     aoClicarEmSalvar,
     aoClicarEmSalvareVoltar,
 }) =>{
+    const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down ('sm'));
+    const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down ('md'));
     const theme = useTheme();
 
     return(
@@ -65,7 +67,16 @@ export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
                     onClick={aoClicarEmSalvar}
                     disableElevation 
                     endIcon={<Icon>save</Icon>}
-                >Salvar</Button>
+                >
+                    <Typography 
+                        variant="button" 
+                        whiteSpace="nowrap" 
+                        textOverflow="ellipsis" 
+                        overflow="hidden"
+                    >
+                        Salvar
+                    </Typography>
+                </Button>
             )}
             {mostrarBotaoSalvarCarregando &&(
                 <Skeleton 
@@ -74,34 +85,50 @@ export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
                 />
             )}
 
-            {(mostrarBotaoNovo && !mostrarBotaoNovoCarregando) &&(
+            {(mostrarBotaoNovo && !mostrarBotaoNovoCarregando && !smDown) &&(
                 <Button
                     color="primary"
                     variant="outlined"
                     onClick={aoClicarEmNovo}
                     disableElevation 
                     endIcon={<Icon>add</Icon>}
-                >{textoBotaoNovo}</Button>
+                >
+                    <Typography 
+                        variant="button" 
+                        whiteSpace="nowrap" 
+                        textOverflow="ellipsis" 
+                        overflow="hidden"
+                    >
+                        {textoBotaoNovo}
+                    </Typography>
+                </Button>
             )}
-            {mostrarBotaoNovoCarregando &&(
+            {(mostrarBotaoNovoCarregando && !smDown) &&(
                 <Skeleton 
                 width={110}
                 height={60}
             />
             )}
             
-            
-
-            {(mostrarBotaoSalvareVoltar && !mostrarBotaoSalvareVoltarCarregando) &&(
+            {(mostrarBotaoSalvareVoltar && !mostrarBotaoSalvareVoltarCarregando && !smDown && !mdDown) &&(
                 <Button
                     color="primary"
                     variant="outlined"
                     onClick={aoClicarEmSalvareVoltar}
                     disableElevation 
                     endIcon={<Icon>save</Icon>}
-                >Salvar e Voltar</Button>
+                >
+                    <Typography 
+                        variant="button" 
+                        whiteSpace="nowrap" 
+                        textOverflow="ellipsis" 
+                        overflow="hidden"
+                    >
+                        Salvar e Voltar
+                    </Typography>
+                </Button>
             )}
-            {mostrarBotaoSalvareVoltarCarregando &&(
+            {(mostrarBotaoSalvareVoltarCarregando && !smDown && !mdDown) &&(
                 <Skeleton 
                     width={180}
                     height={60}
@@ -114,7 +141,16 @@ export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
                     onClick={aoClicarEmVoltar}
                     disableElevation 
                     endIcon={<Icon>arrow_back</Icon>}
-                >Voltar</Button>
+                >
+                    <Typography 
+                        variant="button" 
+                        whiteSpace="nowrap" 
+                        textOverflow="ellipsis" 
+                        overflow="hidden"
+                    >
+                        Voltar
+                    </Typography>
+                </Button>
             )}
             {mostrarBotaoVoltarCarregando &&(    
                 <Skeleton 
@@ -123,7 +159,14 @@ export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
                 />
             )}
 
-            <Divider variant="middle" orientation="vertical" />
+            {
+                (
+                    mostrarBotaoVoltar &&
+                    (mostrarBotaoNovo || mostrarBotaoApagar || mostrarBotaoSalvar || mostrarBotaoSalvareVoltar)
+            ) && (
+                <Divider variant="middle" orientation="vertical" />
+            )
+            }
             
             {(mostrarBotaoApagar && !mostrarBotaoApagarCarregando)&&(
                 <Button
@@ -132,7 +175,16 @@ export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
                     onClick={aoClicarEmApagar}
                     disableElevation 
                     endIcon={<Icon>delete</Icon>}
-                >Apagar</Button>
+                >
+                    <Typography 
+                        variant="button" 
+                        whiteSpace="nowrap" 
+                        textOverflow="ellipsis" 
+                        overflow="hidden"
+                    >
+                        Apagar
+                    </Typography>
+                </Button>
             )}
             {mostrarBotaoApagarCarregando &&(
                 <Skeleton 
