@@ -11,4 +11,4 @@ import { errorInterceptor, responseInterceptor } from "./interceptors";
 
     );
 
-    export{ Api };
+    export { Api };
