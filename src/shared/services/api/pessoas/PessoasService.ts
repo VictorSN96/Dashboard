@@ -1,6 +1,15 @@
+import { Environment } from "../../../environment";
+import { Api } from "../axios-config";
 
+const getAll = async (page = 1, filter = ''): Promise<any> =>{
+    try{
+        const urlRelativa = `/pessoas?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
 
-const getAll = async (): Promise<any> =>{};
+        const { data } = await Api.get( urlRelativa ); // Desestruturação: chamada para a URL relativa no Bancd de Dados //
+    }  catch (error){
+        
+    }
+};
 
 const getById = async (): Promise<any> =>{};
 
