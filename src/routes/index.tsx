@@ -23,7 +23,7 @@ export const Approutes = () =>{
         },
         {
             label: 'Cidades',
-            icon: 'city',
+            icon: 'apartment',
             path: '/cidades'
         },
         ]);
