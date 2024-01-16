@@ -3,15 +3,21 @@ import { useCallback, useRef } from "react";
 
 
 
-export const UseDebounce = () =>{
+export const UseDebounce = (delay = 300, notDelayInFirstTime = true) =>{
+    const isFirsTime = useRef(notDelayInFirstTime);
     const debouncing = useRef<NodeJS.Timeout>();
     
     const debounce = useCallback((func: ()=> void) =>{
-        if(debouncing.current){
-            clearTimeout(debouncing.current);
+        if(isFirsTime.current){
+            isFirsTime.current = false;
+            func();
+        }else{
+            if(debouncing.current){
+                clearTimeout(debouncing.current);
+            }
         }
 
-    debouncing.current= setTimeout(()=>{func();}, 300);}, []);
+    debouncing.current= setTimeout(()=>{func();}, delay);}, [delay]);
 
     return{ debounce };
 };

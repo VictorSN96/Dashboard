@@ -11,7 +11,7 @@ import { UseDebounce } from "../../shared/hooks";
 
 export const ListagemDePessoas: React.FC = () =>{
     const [searchParams, setSearchParams] = useSearchParams();/* interação com input de busca e a URL usado pelo react router dom*/ 
-    const { debounce } = UseDebounce();
+    const { debounce } = UseDebounce(3000, false);
 
     const busca = useMemo(() =>{
         return searchParams.get('busca') || '';
