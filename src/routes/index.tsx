@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 import {  useDrawerContext } from '../shared/contexts';
 import { Dashboard, 
-    ListagemDeCidade 
+    ListagemDePessoas 
 } from '../pages';
 
 
@@ -22,9 +22,9 @@ export const Approutes = () =>{
             path: '/pagina-inicial'
         },
         {
-            label: 'Cidades',
-            icon: 'apartment',
-            path: '/cidades'
+            label: 'Pessoas',
+            icon: 'people',
+            path: '/pessoas'
         },
         ]);
     }, []);
@@ -33,8 +33,8 @@ export const Approutes = () =>{
         <Routes>
             <Route path="/pagina-inicial" element={<Dashboard />} />
 
-            <Route path="/cidades" element={<ListagemDeCidade />} />
-            {/*<Route path="/cidades/detalhes:id" element={<Dashboard />} >*/}
+            <Route path="/pessoas" element={<ListagemDePessoas />} />
+            {/*<Route path="/pessoas/detalhes:id" element={<Dashboard />} >*/}
             
             {<Route path='*' element={<Navigate to="/pagina-inicial"/>} /> }
         </Routes>

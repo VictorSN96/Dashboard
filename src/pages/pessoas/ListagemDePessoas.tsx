@@ -2,21 +2,26 @@ import { useSearchParams } from "react-router-dom";
 
 import { FerramentasDaListagem } from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 
 
 
-export const ListagemDeCidade: React.FC = () =>{
+export const ListagemDePessoas: React.FC = () =>{
     const [searchParams, setSearchParams] = useSearchParams();/* interação com input de busca e react router dom*/ 
 
     const busca = useMemo(() =>{
         return searchParams.get('busca') || '';
     },[searchParams]);
 
+    useEffect(()=>{
+
+        //CidadesService
+    }, []);
+
     return(
         <LayoutBaseDePagina
-            titulo='listagem de cidades'
+            titulo='listagem de Pessoas'
             barraDeFerramentas={
                 <FerramentasDaListagem
                     mostrarInputBusca
