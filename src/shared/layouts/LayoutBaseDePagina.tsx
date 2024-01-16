@@ -9,7 +9,7 @@ import {Box } from '@mui/system';
  
 interface ILayoutBaseDePaginaProps{
     titulo: string;
-    children: ReactNode;
+    children?: ReactNode;
     barraDeFerramentas?: ReactNode;
 }
 

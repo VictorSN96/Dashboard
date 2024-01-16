@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useMemo } from "react";
 
-import { FerramentasDaListagem } from "../../shared/components";
+import { FerramentasDaListagem} from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
 import { PessoaService } from "../../shared/services/api/pessoas/PessoasService";
 import { UseDebounce } from "../../shared/hooks";
