@@ -6,6 +6,7 @@ import { FerramentasDaListagem} from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
 import { IListagemPessoa, PessoaService } from "../../shared/services/api/pessoas/PessoasService";
 import { UseDebounce } from "../../shared/hooks";
+import { Environment } from "../../shared/environment";
 
 
 
@@ -74,6 +75,11 @@ export const ListagemDePessoas: React.FC = () =>{
                             </TableRow> 
                         ))}
                     </TableBody>
+
+                        {totalCount === 0 && !isLoading && (
+                            <caption>{Environment.LISTAGEM_VAZIA}</caption>
+                        )}                          
+
                     <TableFooter>
                         {isLoading && (
                             <TableRow>
