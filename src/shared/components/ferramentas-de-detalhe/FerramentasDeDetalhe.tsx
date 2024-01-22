@@ -55,7 +55,7 @@ export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
             padding={1} 
             paddingX={2} 
             display="flex" 
-            alignItems="center" 
+            alignItems="center"
             height={theme.spacing(5)} 
             component={Paper}
         >
@@ -128,12 +128,12 @@ export const FerramentasDeDetalhe:React.FC<IFerramentasDeDetalheProps> = ({
                     </Typography>
                 </Button>
             )}
-            {(mostrarBotaoSalvareVoltarCarregando && !smDown && !mdDown) &&(
+            {/*{(mostrarBotaoSalvareVoltarCarregando && !smDown && !mdDown) &&(
                 <Skeleton 
-                    width={180}
-                    height={60}
+                    width={1}
+                    height={1}
                 />
-            )}
+            )}*/}
             {(mostrarBotaoVoltar && !mostrarBotaoVoltarCarregando) &&(    
                 <Button
                     color="primary"
