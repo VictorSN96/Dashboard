@@ -8,7 +8,7 @@ import { LayoutBaseDePagina } from "../../shared/layouts";
 import { IListagemPessoa, PessoaService } from "../../shared/services/api/pessoas/PessoasService";
 import { UseDebounce } from "../../shared/hooks";
 import { Environment } from "../../shared/environment";
-import { instanceOf } from "prop-types";
+
 
 
 
